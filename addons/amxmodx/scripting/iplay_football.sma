@@ -7,10 +7,11 @@
 #define MAX_NETS 2 
 #define FLAG_BALL ADMIN_RCON
 
-new const PLUGIN_VERSION[] = "2.0" 
+new const PLUGIN_VERSION[] = "2.1" 
 new const PLUGIN_PREFIX[] =  "JB: Football" 
 
 static const g_szBallBounce[] = "kickball/bounce.wav" 
+static const g_szBallGoal[] = "kickball/goal.wav"
 static const g_szBallModel[] = "models/kickball/ball.mdl" 
 static const g_szBallName[] = "ball"
 
@@ -276,7 +277,8 @@ public MoveBall(where)
 public plugin_precache() 
 { 
 	precache_model(g_szBallModel) 
-	precache_sound(g_szBallBounce) 
+	precache_sound(g_szBallBounce)
+	precache_sound(g_szBallGoal)
 	 
 	g_iTrailSprite = precache_model("sprites/laserbeam.spr") 
 	 
@@ -837,7 +839,10 @@ public Goal()
 	set_hudmessage(211, 211, 211, -1.0, 0.82, 0, 6.0, 6.0) 
 	 
 	if(g_Owner != 0) 
+	{
 		show_hudmessage(0, "%s scored a goal^nfrom %d units!", name, fdistance) 
+		emit_sound(g_Owner, CHAN_ITEM, g_szBallGoal, 1.0, ATTN_NORM, 0, PITCH_NORM)
+	}
 	 
 	flameWave(Origin, 0, 0, 255, 4) 
 	 
