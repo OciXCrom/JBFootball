@@ -51,7 +51,7 @@ new g_SayText
 
 public plugin_init() 
 { 
-	register_plugin("JB: Football [iPlay Edit]", PLUGIN_VERSION, "CreePs & lolz123 & @f0rce")
+	register_plugin("JB: Football [OciXCrom Edit]", PLUGIN_VERSION, "CreePs & lolz123 & @f0rce")
 	register_cvar("JBFootball", PLUGIN_VERSION, FCVAR_SERVER|FCVAR_SPONLY|FCVAR_UNLOGGED)
 	 
 	ball_speed = register_cvar("jb_ball_speed", "200.0") 
